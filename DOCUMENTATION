@@ -1,5 +1,6 @@
 DOCUMENTATION
 
+
 This Python code is a Flask web application that integrates with the GitHub API to provide a user authentication system and access to GitHub user data. 
 The application allows users to log in with their GitHub accounts and retrieve their GitHub profile information, including their name, bio, followers, following, public repositories, and more.
 
