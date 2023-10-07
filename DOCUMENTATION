@@ -1,0 +1,52 @@
+DOCUMENTATION
+
+This Python code is a Flask web application that integrates with the GitHub API to provide a user authentication system and access to GitHub user data. 
+The application allows users to log in with their GitHub accounts and retrieve their GitHub profile information, including their name, bio, followers, following, public repositories, and more.
+
+Here's a brief documentation of the code:
+
+1. **Flask Setup:**
+   - The code begins by importing the necessary modules and setting up the Flask application.
+   - It configures Flask with various settings, including the database URI, secret key, and debug mode.
+
+2. **GitHub Integration:**
+   - The application integrates with GitHub using the `Flask-GitHub` extension. It requires setting up a GitHub OAuth application with a client ID and client secret.
+   - The GitHub client ID and client secret are provided in the code as `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
+
+3. **Database Configuration:**
+   - The code sets up an SQLite database to store user data.
+   - SQLAlchemy is used for database operations.
+
+4. **Database Models:**
+   - The code defines a `User` model using SQLAlchemy to represent user data.
+   - The model includes fields for GitHub access token, GitHub user ID, GitHub login, and more.
+
+5. **Database Initialization:**
+   - The `init_db` function initializes the database by creating necessary tables.
+
+6. **Request Handling:**
+   - The code defines several routes and request handlers for different functionalities.
+   - Routes include `/`, `/github-callback`, `/login`, `/logout`, `/user`, `/user/<username>`, `/user/followers`, `/user/following`, and `/repo`.
+
+7. **Authentication and Authorization:**
+   - Users can log in with their GitHub accounts using the `/login` route. This initiates the OAuth authorization process.
+   - After authorization, the `/github-callback` route handles the callback from GitHub and stores user data in the database.
+   - Users are authenticated based on their session data.
+
+8. **User Profile:**
+   - The `/user` route retrieves the user's GitHub profile information and displays it on a template.
+   - The profile includes the user's avatar, name, bio, followers, following, public repositories, email, and a list of repositories.
+
+9. **User Followers and Following:**
+   - The `/user/followers` and `/user/following` routes retrieve and display the user's GitHub followers and following, respectively.
+
+10. **Repository Information:**
+    - The `/repo` route retrieves information about a specific GitHub repository (`rpj09/FRIDAY-virtual-assistant` in this case) using the GitHub API.
+
+11. **Database Cleanup:**
+    - The `@app.after_request` decorator ensures that the database session is removed after each request.
+
+12. **Running the Application:**
+    - The code block at the end of the script initializes the database and runs the Flask application in debug mode.
+
+Please note that this code is meant for educational purposes and requires setting up a GitHub OAuth application with the correct client ID and client secret for it to work in a real environment. Additionally, it uses SQLite as the database, which may not be suitable for production use.
